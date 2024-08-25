@@ -1,0 +1,10 @@
+
+# project build dir
+build/
+
+# output of protoc
+generated-sources/
+*.pb.h
+*.pb.cc
+
+
