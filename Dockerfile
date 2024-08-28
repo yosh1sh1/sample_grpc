@@ -32,6 +32,14 @@ RUN git clone --recurse-submodules -b v1.66.0 --depth 1 --shallow-submodules htt
     && cd .. \
     && rm -rf grpc
 
-
+#
+# spdlog(installed under /usr/local/include/spdlog)
+#
+RUN git clone https://github.com/gabime/spdlog.git \
+    && cd spdlog && mkdir build && cd build \
+    && cmake .. && make -j \
+    && make install \
+    && cd ../../ \
+    && rm -rf spdlog
 
 CMD ["/bin/bash"]
