@@ -17,7 +17,7 @@ add_definitions(
 
 add_link_options(
     -Wl,-Bsymbolic
-    -Wl,--exlude-libs,ALL
+    -Wl,--exclude-libs,ALL
 )
 
 add_compile_options(
