@@ -232,7 +232,7 @@ target_link_libraries(
 )
 
 #
-# main
+# server
 #
 file(
     GLOB_RECURSE
@@ -254,6 +254,45 @@ target_include_directories(
 
 target_link_libraries(
     ${PROJECT_NAME}_server
+    PUBLIC
+    proto_domain
+    protobuf
+    # ${PROTOBUF_ABSL_DEPS}
+    # ${ABSL_LIBS}
+    # absl::check
+    # absl::flags
+    # absl::flags_parse
+    # absl::log
+    # absl_flags
+    # absl_flags_parse
+    # utf8_validity
+    gRPC::grpc++
+    gRPC::grpc++_reflection
+    # gRPC::grpc++_unsecure
+)
+
+#
+# client
+#
+file(
+    GLOB_RECURSE
+    GRPC_SAMPLE_SERVER_FILES
+    ${PROJECT_SOURCE_DIR}/src/client/*.cc
+)
+
+add_executable(${PROJECT_NAME}_client ${GRPC_SAMPLE_SERVER_FILES})
+
+target_include_directories(
+    ${PROJECT_NAME}_client
+    PUBLIC
+    ${PROJECT_SOURCE_DIR}/src/client
+    ${PROJECT_SOURCE_DIR}/generated-sources
+    # /include # for grpc
+    # /usr/local/include
+)
+
+target_link_libraries(
+    ${PROJECT_NAME}_client
     PUBLIC
     proto_domain
     protobuf
