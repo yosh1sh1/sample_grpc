@@ -17,7 +17,7 @@ help:	## show help message
 
 .PHONY: up
 up:	## Create a container
-	docker compose up -d
+	docker compose up -d --build
 
 .PHONY: down
 down:	## Stop and remove a container
@@ -38,6 +38,7 @@ rootshell:	_shell	## Allocate a terminal to a running container as root
 .PHONY:	cmake
 cmake:	## Run cmake
 	mkdir -p $(OUT)
+	mkdir -p $(PROTO_OUT)
 	cd $(OUT) && cmake -DCMAKE_BUILD_TYPE=$(CONFIG) -DPROTO_OUT=$(PROTO_OUT) $(CMAKE_SOURCE_DIR)
 
 .PHONY:	build
