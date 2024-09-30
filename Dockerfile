@@ -13,6 +13,7 @@ RUN dnf install -y \
     vi \
     git \
     which \
+    procps \
     && dnf clean all
 
 #

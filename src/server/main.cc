@@ -8,7 +8,7 @@
 #include "service/common_service_impl.h"
 #include "service.pb.h"
 
-void run_server(std::string endpoint) {
+void run_server(const std::string endpoint) {
     grpc::EnableDefaultHealthCheckService(true);
     grpc::reflection::InitProtoReflectionServerBuilderPlugin();
     grpc::ServerBuilder builder;
@@ -25,7 +25,6 @@ void run_server(std::string endpoint) {
 }
 
 int main(int argc, char *argv[]) {
-
     if (argc != 2) {
         std::cout << "Invalid argument. argc: " << argc << std::endl;
         return 0;
