@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 
+#include <spdlog/spdlog.h>
+
 #include <grpcpp/ext/proto_server_reflection_plugin.h>
 #include <grpcpp/grpcpp.h>
 #include <grpcpp/health_check_service_interface.h>
@@ -24,14 +26,14 @@ void run_server(const std::string endpoint) {
     builder.RegisterService(&service);
 
     std::unique_ptr<grpc::Server> server(builder.BuildAndStart());
-    std::cout << "Server listening on " << endpoint << std::endl;
+    spdlog::info("Server listening on {}", endpoint);
 
     server->Wait();
 }
 
 int main(int argc, char *argv[]) {
     if (argc != 2) {
-        std::cout << "Invalid argument. argc: " << argc << std::endl;
+        spdlog::error("Invalid argument. argc:  {}", argc);
         return 0;
     }
 

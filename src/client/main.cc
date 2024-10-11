@@ -34,7 +34,7 @@ void call_common_service(const std::string endpoint) {
 
 int main(int argc, char *argv[]) {
     if (argc != 2) {
-        std::cout << "Invalid argument. argc: " << argc << std::endl;
+        spdlog::error("Invalid argument. argc:  {}", argc);
         return 0;
     }
 
