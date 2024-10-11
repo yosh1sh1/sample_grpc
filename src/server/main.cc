@@ -14,6 +14,11 @@ void run_server(const std::string endpoint) {
     grpc::ServerBuilder builder;
 
     builder.AddListeningPort(endpoint, grpc::InsecureServerCredentials());
+    
+    // デフォルト 送信最大サイズ：無制限
+    // デフォルト 受信最大サイズ：4MB
+    // builder.SetMaxSendMessageSize(std::numeric_limits<int>::max());
+    // builder.SetMaxRecvMessageSize(std::numeric_limits<int>::max());
 
     sample::v1::CommonServiceImpl service;
     builder.RegisterService(&service);
