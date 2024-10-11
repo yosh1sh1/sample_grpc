@@ -45,9 +45,13 @@ cmake:	## Run cmake
 build:	cmake	## Compile
 	cmake --build $(OUT) -- -l $(shell nproc) -j $(shell nproc)
 
-.PHONY:	clen
+.PHONY:	clean
 clean:	## Remove all files generated on a build
 	cmake --build $(OUT) --target clean
+
+.PHONY:	install
+install:
+	cmake --install $(OUT)
 
 .PHONY: proto
 proto:	## compile .proto

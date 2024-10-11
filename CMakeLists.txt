@@ -120,6 +120,8 @@ target_link_libraries(
     gRPC::grpc++_reflection
 )
 
+INSTALL(TARGETS ${PROJECT_NAME}_server RUNTIME DESTINATION ${PROJECT_SOURCE_DIR}/bin)
+
 #
 # client
 #
@@ -146,3 +148,5 @@ target_link_libraries(
     gRPC::grpc++
     gRPC::grpc++_reflection
 )
+
+INSTALL(TARGETS ${PROJECT_NAME}_client RUNTIME DESTINATION ${PROJECT_SOURCE_DIR}/bin)
