@@ -17,7 +17,7 @@ help:	## show help message
 
 .PHONY: up
 up:	## Create a container
-	docker compose up -d --build
+	docker compose up -d
 
 .PHONY: down
 down:	## Stop and remove a container
