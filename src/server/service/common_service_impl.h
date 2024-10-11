@@ -8,6 +8,7 @@ class CommonServiceImpl final : public CommonService::Service {
     public:
         CommonServiceImpl() = default;
         ~CommonServiceImpl() = default;
+    private:
         grpc::Status Ping(grpc::ServerContext* context, const PingRequest* request, PingResponse* response);
 };
 
